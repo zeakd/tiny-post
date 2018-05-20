@@ -1,10 +1,27 @@
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import path from 'path'
 import pkg from './package.json'
+import mwPkg from './middlewares/package.json'
 
-export default [  
+const external = [...Object.keys(pkg.dependencies), 'path']
+
+export default [
+  {
+    input: 'src/middlewares.js',
+    external,
+    output: [
+      {
+        file: path.resolve('middlewares', mwPkg.main),
+        format: 'cjs',
+      },
+      {
+        file: path.resolve('middlewares', mwPkg.module),
+        format: 'es',
+      }
+    ]
+  },
   {
     input: 'src/index.js',
+    external,
     output: [
       {
         file: pkg.main, 
@@ -15,5 +32,5 @@ export default [
         format: 'es',
       }
     ]
-  }
+  },
 ]

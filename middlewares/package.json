@@ -1,0 +1,6 @@
+{
+  "name": "tinypost/middlewares",
+  "main": "../lib/middlewares.js",
+  "module": "../es/middlewares.js",
+  "jsnext:main": "../es/middlewares.js"
+}
