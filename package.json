@@ -1,14 +1,8 @@
 {
+  "name": "tinypost",
   "version": "0.0.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "devDependencies": {
-    "ava": "1.0.0-beta.4",
-    "del-cli": "^1.1.0",
-    "rollup": "^0.58.2",
-    "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-node-resolve": "^3.3.0"
-  },
   "scripts": {
     "clean": "del es/ lib/",
     "prebuild": "npm run clean",
@@ -37,14 +31,20 @@
     "read-pkg": "^3.0.0",
     "read-pkg-up": "^3.0.0"
   },
-  "name": "tiny-post",
+  "devDependencies": {
+    "ava": "1.0.0-beta.4",
+    "del-cli": "^1.1.0",
+    "rollup": "^0.58.2",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0"
+  },
   "description": "tiny but extensible front-mattered markdown post builder",
   "directories": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zeakd/tiny-post.git"
+    "url": "git+https://github.com/zeakd/tinypost.git"
   },
   "keywords": [
     "static",
@@ -58,7 +58,7 @@
   ],
   "author": "zeakd",
   "bugs": {
-    "url": "https://github.com/zeakd/tiny-post/issues"
+    "url": "https://github.com/zeakd/tinypost/issues"
   },
-  "homepage": "https://github.com/zeakd/tiny-post#readme"
+  "homepage": "https://github.com/zeakd/tinypost#readme"
 }
