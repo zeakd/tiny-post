@@ -25,6 +25,4 @@ if (input.length < 1) {
   process.exit(-1);
 }
 
-const cwd = process.cwd();
-
-tinypost(cli.input, cli.flags);
+tinypost(input, cli.flags);
