@@ -8,18 +8,33 @@ import marked from 'marked'
 import loadConfig from './loadConfig'
 import parser from './parser'
 import Renderer from './Renderer'
+import Watcher from './Watcher'
 
 // utils
 import replaceExt from './utils/replaceExt'
 
+let watcher;
+
 async function tinypost (globs, options) {
-  
+
   ////
   // get configuration.
   const config = await loadConfig(options);
   const { cwd } = config;
   
   // console.log('config', config)
+
+  // init watch
+  if (config.watch) {
+    if (!watcher) {
+      watcher = new Watcher(config);
+      watcher.on('change', () => {
+        tinypost(globs, options);
+      })
+    }
+  } else {
+    if (watcher) watcher.close();
+  }
 
   ////
   // get all target sources.
@@ -30,6 +45,9 @@ async function tinypost (globs, options) {
     }
   }));
 
+  if (config.watch) {
+    watcher.add(srcPaths);
+  }
   // console.log(srcPaths);
 
   ////
@@ -47,6 +65,12 @@ async function tinypost (globs, options) {
 
     // parse it
     const parsed = parse(raw);
+
+    if (config.watch) {
+      if (parsed.layout) {
+        watcher.add(parsed.layout);
+      }
+    }
 
     // put additional info.
     // srcPath is unique.
