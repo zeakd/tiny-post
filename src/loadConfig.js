@@ -1,24 +1,22 @@
 import path from 'path'
 import readPkgUp from 'read-pkg-up'
 import fs from 'fs-extra'
+import nunjucks from './renderers/nunjucks'
+import ejs from './renderers/ejs'
 
 const defaultConfig = {
   outDir: 'build',
   extensions: ['md', 'markdown'],
-  renderer: {
-    nunjucks: {
+  renderers: [
+    {
       extensions: ['.nunjucks', '.njs'],
-      render (template, context) {
-
-      },
+      render: nunjucks,
     },
-    ejs: {
+    {
       extensions: ['.ejs'],
-      render (template, context) {
-        
-      }
+      render: ejs,
     }
-  }
+  ]
 }
 
 const defaultConfigName = 'tinypost.config.js'
