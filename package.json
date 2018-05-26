@@ -14,7 +14,8 @@
   },
   "files": [
     "lib",
-    "es"
+    "es",
+    "bin"
   ],
   "bin": {
     "tp": "./bin/cli.js"
